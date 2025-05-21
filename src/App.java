@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) {
 
-
+        /*
         Model.crearCoche("Volvo", "1231241");
         Model.crearCoche("Mercedes", "12312wq");
         Model.crearCoche("Opel", "1232345");
@@ -15,7 +15,8 @@ public class App {
         Controller.frenar(5,"1231241");
 
         View.muestraVelocidad("1231241", Controller.getVelocidad("1231241"));
-
+        *///
+        View.menu();
 
     }
 }
