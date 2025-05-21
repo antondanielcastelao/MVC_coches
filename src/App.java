@@ -15,7 +15,7 @@ public class App {
         Controller.frenar(5,"1231241");
 
         View.muestraVelocidad("1231241", Controller.getVelocidad("1231241"));
-        */
+        *///
         View.menu();
 
     }
