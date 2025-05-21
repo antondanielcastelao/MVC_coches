@@ -1,4 +1,5 @@
 import java.lang.module.ModuleDescriptor;
+import java.util.ArrayList;
 
 public class Controller {
     static View miView = new View();
@@ -51,4 +52,11 @@ public class Controller {
         return miModel.getVelocidad(matricula);
     }
 
+    /**
+     * obtiene listado de coches
+     * @return coches
+     */
+    public ArrayList<Coche> getParking() {
+        return miModel.parking;
+    }
 }

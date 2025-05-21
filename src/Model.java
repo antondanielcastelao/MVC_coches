@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Clase encargada de manejar los datos
  */
 public class Model {
-    static ArrayList<Coche> parking = new ArrayList<>();
+    ArrayList<Coche> parking = new ArrayList<>();
 
     /**
      * Crea un coche y lo mete en el parking
