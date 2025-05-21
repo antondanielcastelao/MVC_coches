@@ -1,10 +1,12 @@
 import java.lang.module.ModuleDescriptor;
 
 public class Controller {
+    static View miView = new View();
+    static Model miModel = new Model();
+
     public static void main(String[] args) {
         // Instanciamos la vista y el modelo
-        View miView = new View();
-        Model miModel = new Model();
+
 
         // Crear tres coches
         miModel.crearCoche("LaFerrari", "SBC 1234");
@@ -24,4 +26,29 @@ public class Controller {
             System.out.println("Error");
         } ;
     }
+
+    /**
+     * aumenta la velocidad de un coche
+     * @param v belocidad a acelerar
+     * @param matricula matricula del choce
+     * @return velocidad nueva del coche
+     */
+    public int acelerar(Integer v, String matricula) {
+        int vactual = miModel.getVelocidad(matricula);
+        miModel.cambiarVelocidad(matricula, (v + vactual));
+        return miModel.getVelocidad(matricula);
+    }
+
+    /**
+     * baja la velocidad d un coche
+     * @param v velocidad a disminur
+     * @param matricula matricula del coche
+     * @return velocidad nueva del coche
+     */
+    public int frenar(Integer v, String matricula) {
+        int vactual = miModel.getVelocidad(matricula);
+        miModel.cambiarVelocidad(matricula, (v - vactual));
+        return miModel.getVelocidad(matricula);
+    }
+
 }
