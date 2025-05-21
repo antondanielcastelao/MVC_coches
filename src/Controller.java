@@ -2,42 +2,30 @@ import java.lang.module.ModuleDescriptor;
 import java.util.ArrayList;
 
 public class Controller {
-    static View miView = new View();
-    static Model miModel = new Model();
-
-    public static void main(String[] args) {
-        // Instanciamos la vista y el modelo
-
-
-        // Crear tres coches
-        miModel.crearCoche("LaFerrari", "SBC 1234");
-        miModel.crearCoche("Alpine", "HYU 4567");
-        miModel.crearCoche("Aston Martin", "FGH 3333");
-
-        Coche ferrari = miModel.getCoche("SBC 1234");
-        // modifica la velocidad
-        int nuevaVelocidad = miModel.cambiarVelocidad("SBC 1234", 30);
-
-        // recoje la velocidad y la muestra (tarea de la View)
-        boolean hecho = miView.muestraVelocidad("SBC 1234", miModel.getVelocidad("SBC 1234"));
-
-        if (hecho) {
-            System.out.println("Correcto");
-        } else {
-            System.out.println("Error");
-        } ;
-    }
 
     /**
+     * Cambia la velocidad de un coche
+     * @param matricula
+     * @param v nueva velocidad
+     * @return velocidad modificada
+     */
+    public static int cambiarVelocidad(String matricula, Integer v) {
+        // busca el coche
+        Model.getCoche(matricula).velocidad = v;
+        // retorna la nueva velocidad
+        return Model.getCoche(matricula).velocidad;
+    }
+
+        /**
      * aumenta la velocidad de un coche
      * @param v belocidad a acelerar
      * @param matricula matricula del choce
      * @return velocidad nueva del coche
      */
-    public int acelerar(Integer v, String matricula) {
-        int vactual = miModel.getVelocidad(matricula);
-        miModel.cambiarVelocidad(matricula, (v + vactual));
-        return miModel.getVelocidad(matricula);
+    public static int acelerar(Integer v, String matricula) {
+        int vactual = getVelocidad(matricula);
+        cambiarVelocidad(matricula, (v + vactual));
+        return getVelocidad(matricula);
     }
 
     /**
@@ -46,17 +34,27 @@ public class Controller {
      * @param matricula matricula del coche
      * @return velocidad nueva del coche
      */
-    public int frenar(Integer v, String matricula) {
-        int vactual = miModel.getVelocidad(matricula);
-        miModel.cambiarVelocidad(matricula, (v - vactual));
-        return miModel.getVelocidad(matricula);
+    public static int frenar(Integer v, String matricula) {
+        int vactual = getVelocidad(matricula);
+        cambiarVelocidad(matricula, (vactual - v));
+        return getVelocidad(matricula);
     }
 
     /**
      * obtiene listado de coches
      * @return coches
      */
-    public ArrayList<Coche> getParking() {
-        return miModel.parking;
+    public static ArrayList<Coche> getParking() {
+        return Model.parking;
     }
+
+    /**
+     * Ddevuelve la velocidad segun la matricula
+     * @param matricula
+     * @return
+     */
+    public static int getVelocidad(String matricula) {
+        return Model.getCoche(matricula).velocidad;
+    }
+
 }

@@ -10,12 +10,17 @@ public class View {
      * @param v velocidad
      * @return true si se ha mostrado correctamente
      */
-    public boolean muestraVelocidad(String matricula, Integer v){
+    public static boolean muestraVelocidad(String matricula, Integer v){
         System.out.println(matricula + ": " + v + "km/hr");
         return true;
     }
 
-    public boolean muestraCoches(ArrayList<Coche> coches) {
+    /**
+     * muestra una tabla con los coches y sus datos
+     * @param coches arraylist de coches
+     * @return true si salio todo correcto
+     */
+    public static boolean muestraCoches(ArrayList<Coche> coches) {
         System.out.println("Matricula\t\tModelo");
         for (Coche coche :coches) {
             System.out.println(coche.matricula+"\t\t"+coche.modelo);
